@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Workout</string>
+    <string name="hello_world">Hello World</string>
+    <string name="hello_students">Hello Android Students!</string>
+    <string name="change_text">Сменить надпись</string>
+    <string name="ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nibh urna, posuere non felis sed, tristique ullamcorper sapien. Aenean placerat sit amet leo non tincidunt. Vestibulum aliquam mauris enim, sed tincidunt lacus tincidunt nec. Quisque porta ligula neque, eu lobortis mi porta a. Nunc egestas tortor ac varius condimentum. Nullam condimentum lorem commodo ligula ullamcorper tristique. Curabitur ipsum dui, laoreet ac facilisis at, fringilla in lectus. Nunc volutpat dolor ut vehicula tempus. Phasellus mollis augue felis, sed pretium orci lacinia sit amet. Nunc auctor dignissim facilisis. Curabitur laoreet, est eget efficitur blandit, enim nisl dapibus nisl, nec commodo leo felis posuere augue. Mauris sodales magna eu sem dapibus, non aliquam dui convallis. Phasellus in dui quam. Maecenas euismod, augue in dapibus dictum, odio odio fringilla lacus, vitae tincidunt sapien ante ut ligula.
+
+Mauris ut velit sodales, lacinia neque ut, lacinia ipsum. Fusce sed volutpat lectus. Suspendisse fermentum, mi quis laoreet ultrices, dui dui tempor elit, vitae rutrum ligula sem at tortor. Nulla in turpis ut ligula dapibus ornare. Nulla lectus ipsum, convallis sit amet ultricies vel, fringilla eu enim. Duis in libero maximus, mattis diam sed, placerat sapien. Pellentesque suscipit ligula vitae nulla cursus, ac lacinia leo ultrices. Duis commodo posuere nibh.
+
+Phasellus pharetra enim vel leo accumsan suscipit. Nam a condimentum elit, at mattis lacus. Nulla tempor aliquam posuere. Nunc cursus molestie turpis posuere mollis. Integer nec diam lobortis, imperdiet augue vestibulum, aliquet sapien. Nam a euismod felis. Phasellus ac consectetur erat. Integer sit amet posuere nunc, nec facilisis tortor. Aliquam id aliquet quam. Duis nulla mauris, feugiat interdum tellus vitae, molestie lobortis mauris.
+
+Praesent nunc nulla, porta eu tincidunt sed, rhoncus non tortor. Nullam at gravida sapien. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc dignissim volutpat dui ac semper. Integer accumsan consectetur pharetra. Nulla nulla ipsum, porttitor a dolor nec, gravida efficitur arcu. Pellentesque cursus bibendum scelerisque. Suspendisse aliquet dictum eleifend. Mauris auctor, tellus vitae blandit euismod, risus nunc hendrerit dui, ac semper enim sem et augue. Aliquam vel dapibus turpis. Mauris sit amet felis tellus.</string>
+    <string name="weight">{0} кг</string>
+    <string name="record">Результат - {0} кг \nПопытка номер {1}</string>
+    <string name="date">Дата:</string>
+    <string name="exercise_name">Заголовок упражнения</string>
+    <string name="share_resut">Поделиться...</string>
+    <string name="shared_message">Мною установлен рекорд: {0} \n Дата: {1}</string>
+    <string name="record_label">Рекорд:</string>
+    <string name="date_label">Дата:</string>
+    <string name="exercise_name_cardview">Название упражнения</string>
+</resources>
