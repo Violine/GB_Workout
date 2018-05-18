@@ -19,4 +19,6 @@ Praesent nunc nulla, porta eu tincidunt sed, rhoncus non tortor. Nullam at gravi
     <string name="record_label">Рекорд:</string>
     <string name="date_label">Дата:</string>
     <string name="exercise_name_cardview">Название упражнения</string>
+    <string name="add_exercise">Введите название упражнения</string>
+    <string name="enter_exericse_desription">Введите описание упражнения</string>
 </resources>

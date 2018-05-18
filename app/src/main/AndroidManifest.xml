@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".WorkoutDetailActivity">
-
-        </activity>
+        <activity android:name=".WorkoutDetailActivity"></activity>
         <activity android:name=".WorkoutListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddExerciseActivity"
+            android:theme="@android:style/Theme.Dialog"></activity>
     </application>
 
 </manifest>

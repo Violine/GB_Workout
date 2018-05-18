@@ -30,9 +30,7 @@ public class WorkoutListActivity extends AppCompatActivity {
 
     private void initUI() {
         setContentView(R.layout.activity_workout_list);
-
-        addExercise();
-
+        exercises = ExerciseList.getExercisesList();
         recView = findViewById(R.id.recview);
         fab = findViewById(R.id.fab);
 
@@ -47,22 +45,6 @@ public class WorkoutListActivity extends AppCompatActivity {
         recView.setLayoutManager(linearLayoutManager);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(exercises);
         recView.setAdapter(adapter);
-    }
-
-    private void addExercise() {
-        exercises = new ArrayList<>();
-        exercises.add(new Exercise("Подтягивание"));
-        exercises.add(new Exercise("Отжимания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
-        exercises.add(new Exercise("Приседания"));
     }
 
 }

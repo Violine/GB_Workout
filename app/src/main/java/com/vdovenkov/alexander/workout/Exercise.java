@@ -4,13 +4,11 @@ public class Exercise {
 
     private String exerciseName;
     private String exerciseDescription;
-    private int exerciseDate;
+    private int exerciseRecordDate;
 
     Exercise(String exerciseName) {
         this.exerciseName = exerciseName;
     }
-
-
 
     public String getExerciseName() {
         return exerciseName;
@@ -20,11 +18,9 @@ public class Exercise {
         return exerciseDescription;
     }
 
-    public int getExerciseDate() {
-        return exerciseDate;
+    public int getExerciseRecordDate() {
+        return exerciseRecordDate;
     }
-
-
 
     public void setExerciseName(String exerciseName) {
         this.exerciseName = exerciseName;
@@ -34,7 +30,7 @@ public class Exercise {
         this.exerciseDescription = exerciseDescription;
     }
 
-    public void setExerciseDate(int exerciseDate) {
-        this.exerciseDate = exerciseDate;
+    public void setExerciseRecordDate(int exerciseDate) {
+        this.exerciseRecordDate = exerciseDate;
     }
 }

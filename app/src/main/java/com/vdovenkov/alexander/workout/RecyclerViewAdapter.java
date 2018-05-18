@@ -13,6 +13,7 @@ import android.widget.Toast;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ExerciseViewHolder> {
+
     List<Exercise> exercises;
 
     RecyclerViewAdapter(List<Exercise> exercises) {
