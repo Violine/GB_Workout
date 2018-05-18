@@ -13,13 +13,12 @@
         <activity android:name=".WorkoutListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AddExerciseActivity"
-            android:theme="@android:style/Theme.Dialog"></activity>
+            android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
     </application>
 
 </manifest>
