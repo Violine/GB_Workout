@@ -26,6 +26,18 @@ public class WorkoutListActivity extends AppCompatActivity {
         initUI();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        recView.getAdapter().notifyDataSetChanged();
+    }
+
     private void initUI() {
         setContentView(R.layout.activity_workout_list);
         exercises = ExerciseList.getExercisesList();

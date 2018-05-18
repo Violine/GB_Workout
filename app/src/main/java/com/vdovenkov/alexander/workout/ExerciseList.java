@@ -9,21 +9,25 @@ public class ExerciseList {
     private static List<Exercise> exercises;
 
     static {
-        addExercise();
+        generateTestExercise();
     }
 
     ExerciseList() {
 
     }
 
-    private static void addExercise() {
+    private static void generateTestExercise() {
         exercises = new ArrayList<>();
         exercises.add(new Exercise("Подтягивание"));
         exercises.add(new Exercise("Отжимания"));
         exercises.add(new Exercise("Приседания"));
     }
-    public static void removeExercise(){
 
+    public static void removeExercise() {
+    }
+
+    protected static void addExerciseToList(Exercise exercise) {
+        exercises.add(exercise);
     }
 
     public static List<Exercise> getExercisesList() {
