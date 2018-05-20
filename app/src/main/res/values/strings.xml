@@ -24,4 +24,7 @@ Praesent nunc nulla, porta eu tincidunt sed, rhoncus non tortor. Nullam at gravi
     <string name="save">Cохранить</string>
     <string name="cancel">Отмена</string>
     <string name="add_exercise_button">Добавить</string>
+    <string name="delete_exercise_warning">Действительно удалить упражнение?</string>
+    <string name="message_delete_warning">Все рекорды будут удалены</string>
+    <string name="delete">Удалить</string>
 </resources>

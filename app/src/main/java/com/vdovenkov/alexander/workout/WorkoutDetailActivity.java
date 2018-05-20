@@ -1,7 +1,10 @@
 package com.vdovenkov.alexander.workout;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
@@ -22,6 +26,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     ImageButton minusRepsButton;
     ImageButton shareResultButton;
     Button saveRecordButton;
+    FloatingActionButton removeExerciseFab;
 
     TextView repsCountTextView;
     TextView weightTextView;
@@ -40,6 +45,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO Реализовать сохранение значений при повороте экрана
         InitUI();
 
         plusRepsButton.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +97,28 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                 createShareIntent(toShareMessage);
             }
         });
-
+        removeExerciseFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setTitle(getString(R.string.delete_exercise_warning));
+                builder.setMessage(getString(R.string.message_delete_warning));
+                builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(v.getContext(), "Удаляем элемент", Toast.LENGTH_SHORT).show();
+                        //TODO здесь необходимо реализовать удаление элемента из базы данных
+                    }
+                });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
+            }
+        });
     }
 
     private void createShareIntent(String messageToShare) {
@@ -106,7 +133,6 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String titleText = intent.getStringExtra("exerciseName");
 
-        shareResultButton = findViewById(R.id.workout_detail_share_result_button);
         workoutToolbar = findViewById(R.id.workout_toolbar);
         repsCountTextView = findViewById(R.id.workout_detail_reps_text_view);
         weightTextView = findViewById(R.id.workout_detail_weight_text_view);
@@ -117,9 +143,11 @@ public class WorkoutDetailActivity extends AppCompatActivity {
 
         reps = Integer.parseInt(repsCountTextView.getText().toString());
 
+        shareResultButton = findViewById(R.id.workout_detail_share_result_button);
         plusRepsButton = findViewById(R.id.workout_detail_plus_reps_button);
         minusRepsButton = findViewById(R.id.workout_detail_minus_reps_button);
         saveRecordButton = findViewById(R.id.workout_detail_save_record_button);
+        removeExerciseFab = findViewById(R.id.fab_remove_exercise);
 
         weightSeekBar = findViewById(R.id.workout_detail_weight_seek_bar);
 
