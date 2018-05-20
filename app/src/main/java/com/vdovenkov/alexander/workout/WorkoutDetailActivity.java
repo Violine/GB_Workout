@@ -45,6 +45,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO Реализовать сохранение значений при повороте экрана
         InitUI();
 
         plusRepsButton.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +107,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(v.getContext(), "Удаляем элемент", Toast.LENGTH_SHORT).show();
+                        //TODO здесь необходимо реализовать удаление элемента из базы данных
                     }
                 });
                 builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

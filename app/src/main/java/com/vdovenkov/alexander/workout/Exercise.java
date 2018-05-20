@@ -9,7 +9,7 @@ public class Exercise {
     Exercise(String exerciseName) {
         this.exerciseName = exerciseName;
     }
-
+// TODO Сделать перегруженный конструктор, чтобы пользователь мог вводить не только название упраженения, но и описания.
     public String getExerciseName() {
         return exerciseName;
     }
