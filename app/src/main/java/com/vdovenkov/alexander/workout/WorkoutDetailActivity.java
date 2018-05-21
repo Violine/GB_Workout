@@ -70,7 +70,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             reps = Integer.parseInt(savedInstanceState.getString(REPS_COUNT));
             currentDate = String.valueOf(savedInstanceState.get(CURRENT_DATE));
-            recordText= String.valueOf(savedInstanceState.get(RECORD_TEXT));
+            recordText = String.valueOf(savedInstanceState.get(RECORD_TEXT));
         }
         InitUI();
     }
@@ -165,14 +165,16 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         removeExerciseFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
+                //  new RemoveDialog(v.getContext(),getString(R.string.delete_exercise_warning), getString(R.string.message_delete_warning), getString(R.string.delete), getString(R.string.cancel), id);
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                builder.setMessage(getString(R.string.message_delete_warning));
                 builder.setTitle(getString(R.string.delete_exercise_warning));
                 builder.setMessage(getString(R.string.message_delete_warning));
                 builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(v.getContext(), "Удаляем элемент", Toast.LENGTH_SHORT).show();
-                        //TODO здесь необходимо реализовать удаление элемента из базы данных
+                        ExerciseList.removeExerciseFromList(id);
+                        finish();
                     }
                 });
                 builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

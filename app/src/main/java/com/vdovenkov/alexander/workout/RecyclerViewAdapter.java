@@ -41,13 +41,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, WorkoutDetailActivity.class);
-//                intent.putExtra("exerciseName", exerciseText);
-//                intent.putExtra("exerciseDescription", )
                 intent.putExtra("id", position); // передать порядковый номер в списке
-//                Toast.makeText(context, exerciseText, Toast.LENGTH_SHORT).show();
-                // пока что просто создается Тост для демонстнации что прога работает,
-                // в будущем по клику будет подгружать инфа из бд и генериться активити
                 context.startActivity(intent);
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                return false;
             }
         });
     }
