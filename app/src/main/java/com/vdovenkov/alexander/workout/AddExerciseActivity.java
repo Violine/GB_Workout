@@ -38,12 +38,17 @@ public class AddExerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newExerciseName = exerciseNameEditText.getText().toString();
-                 if (!newExerciseName.equals("")){
-                     ExerciseList.addExerciseToList(new Exercise(newExerciseName));
-                     finish();
-                 } else {
-                     Toast.makeText(v.getContext(), "Введите название упражнения!", Toast.LENGTH_SHORT);
-                 }
+                String newExerciseDescription = exerciseDescriptionEditText.getText().toString();
+                if (!newExerciseName.equals("")) {
+                    if (newExerciseDescription.equals("")) {
+                        ExerciseList.addExerciseToList(new Exercise(newExerciseName));
+                    } else {
+                        ExerciseList.addExerciseToList(new Exercise(newExerciseName, newExerciseDescription));
+                    }
+                    finish();
+                } else {
+                    Toast.makeText(v.getContext(), "Введите название упражнения!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

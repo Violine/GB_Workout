@@ -33,7 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(ExerciseViewHolder holder, int position) {
+    public void onBindViewHolder(ExerciseViewHolder holder, final int position) {
         final String exerciseText = exercises.get(position).getExerciseName();
         holder.exerciseName.setText(exerciseText);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -41,8 +41,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, WorkoutDetailActivity.class);
-                intent.putExtra("exerciseName", exerciseText);
-                Toast.makeText(context, exerciseText, Toast.LENGTH_SHORT).show();
+//                intent.putExtra("exerciseName", exerciseText);
+//                intent.putExtra("exerciseDescription", )
+                intent.putExtra("id", position); // передать порядковый номер в списке
+//                Toast.makeText(context, exerciseText, Toast.LENGTH_SHORT).show();
                 // пока что просто создается Тост для демонстнации что прога работает,
                 // в будущем по клику будет подгружать инфа из бд и генериться активити
                 context.startActivity(intent);
