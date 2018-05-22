@@ -1,11 +1,11 @@
 package com.vdovenkov.alexander.workout;
 
 
-import android.content.DialogInterface;
+import android.app.Activity;
+import android.support.v7.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
@@ -47,6 +46,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     String recordText;
 
     Exercise exercise;
+    Activity activity;
 
     int reps;
     int id;
@@ -67,6 +67,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.activity = activity;
         if (savedInstanceState != null) {
             reps = Integer.parseInt(savedInstanceState.getString(REPS_COUNT));
             currentDate = String.valueOf(savedInstanceState.get(CURRENT_DATE));
@@ -165,25 +166,26 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         removeExerciseFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                //  new RemoveDialog(v.getContext(),getString(R.string.delete_exercise_warning), getString(R.string.message_delete_warning), getString(R.string.delete), getString(R.string.cancel), id);
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                builder.setMessage(getString(R.string.message_delete_warning));
-                builder.setTitle(getString(R.string.delete_exercise_warning));
-                builder.setMessage(getString(R.string.message_delete_warning));
-                builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        ExerciseList.removeExerciseFromList(id);
-                        finish();
-                    }
-                });
-                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                builder.show();
+                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), 1, id);
+                dialog.show();
+//                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+//                builder.setMessage(getString(R.string.message_delete_warning));
+//                builder.setTitle(getString(R.string.delete_exercise_warning));
+//                builder.setMessage(getString(R.string.message_delete_warning));
+//                builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        ExerciseList.removeExerciseFromList(id);
+//                        finish();
+//                    }
+//                });
+//                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                    }
+//                });
+//                builder.show();
             }
         });
     }
