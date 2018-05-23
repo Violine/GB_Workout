@@ -6,9 +6,8 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 
 
-public class CustomDialog {
-    private static final int REMOVE_DIALOG = 1;
-    private static final int OTHER_DIALOG = 2; // вдруг понадобятся еще диалоги - будем использовать этот ID
+public class CustomDialog implements WorkoutConstants {
+
 
     public static AlertDialog getDialog(final Context context, int dialogID, final int id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

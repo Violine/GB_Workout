@@ -1,13 +1,13 @@
 package com.vdovenkov.alexander.workout;
 
 
-import android.app.Activity;
 import android.support.v7.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class WorkoutDetailActivity extends AppCompatActivity {
+public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutConstants {
 
     static final String REPS_COUNT = "repsCount";
     static final String RECORD_TEXT = "recordText";
@@ -46,7 +46,6 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     String recordText;
 
     Exercise exercise;
-    Activity activity;
 
     int reps;
     int id;
@@ -67,7 +66,6 @@ public class WorkoutDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.activity = activity;
         if (savedInstanceState != null) {
             reps = Integer.parseInt(savedInstanceState.getString(REPS_COUNT));
             currentDate = String.valueOf(savedInstanceState.get(CURRENT_DATE));
@@ -89,8 +87,14 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         descriptionTextView.setText(exercise.getExerciseDescription());
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
     private void InitUI() {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_workout_detail);
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0); // получаем ID упражнения
         workoutToolbar = findViewById(R.id.workout_toolbar);
@@ -137,7 +141,7 @@ public class WorkoutDetailActivity extends AppCompatActivity {
                 recordValueTextView.setText(MessageFormat.format(getString(R.string.record), weightSeekBar.getProgress(), repsCountTextView.getText()));
                 SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.YYYY", Locale.ROOT);
                 currentDate = formattedDate.format(new Date());
-                recordDateTextView.setText(getString(R.string.date) + currentDate);
+                recordDateTextView.setText(MessageFormat.format(getString(R.string.date), currentDate));
             }
         });
         weightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -166,26 +170,8 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         removeExerciseFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), 1, id);
+                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), REMOVE_DIALOG, id);
                 dialog.show();
-//                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-//                builder.setMessage(getString(R.string.message_delete_warning));
-//                builder.setTitle(getString(R.string.delete_exercise_warning));
-//                builder.setMessage(getString(R.string.message_delete_warning));
-//                builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        ExerciseList.removeExerciseFromList(id);
-//                        finish();
-//                    }
-//                });
-//                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.cancel();
-//                    }
-//                });
-//                builder.show();
             }
         });
     }
