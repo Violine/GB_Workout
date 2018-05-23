@@ -12,10 +12,6 @@ public class ExerciseList {
         generateTestExercise();
     }
 
-    ExerciseList() {
-
-    }
-
     protected static void generateTestExercise() {
         exercises = new ArrayList<>();
         exercises.add(new Exercise("Подтягивание"));

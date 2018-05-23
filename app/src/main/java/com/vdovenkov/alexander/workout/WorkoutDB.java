@@ -11,9 +11,13 @@ public class WorkoutDB extends SQLiteOpenHelper implements BaseColumns {
     private static final int VERSION = 1;
     protected static final String WORKOUT_NAME = "workoutname";
     protected static final String TABLE_NAME = "workout_table";
+    protected static final String WORKOUT_RECORD = "workout_record";
+    protected static final String WORKOUT_RECORD_DATE = "workout_record_date";
+    protected static final String WORKOUT_DESCRIPTION = "workout_description";
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE "
             + TABLE_NAME + " (" + WorkoutDB._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + WORKOUT_NAME + " VARCHAR(255));";
+            + WORKOUT_NAME + " VARCHAR(255), " + WORKOUT_DESCRIPTION + " TEXT, "
+            + WORKOUT_RECORD + " VARCHAR(255), "+ WORKOUT_RECORD_DATE + " VARCHAR(255));";
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS "
             + TABLE_NAME;
 

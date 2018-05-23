@@ -22,15 +22,16 @@ public class AddExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exercise);
-
         initUI();
     }
+
     private void initDB() {
         WorkoutDB sqh = new WorkoutDB(this);
         database = sqh.getWritableDatabase();
-        database.close();
-        sqh.close();
+       // database.close();
+       // sqh.close();
     }
+
 
     private void initUI() {
         addExerciseButton = findViewById(R.id.workout_detail_accept_add_exercise_button);
@@ -55,9 +56,16 @@ public class AddExerciseActivity extends AppCompatActivity {
                     if (newExerciseDescription.equals("")) {
                         ExerciseList.addExerciseToList(new Exercise(newExerciseName));
                         content.put(WorkoutDB.WORKOUT_NAME, newExerciseName);
-                        database.insert(WorkoutDB.TABLE_NAME, WorkoutDB.WORKOUT_NAME, content);
+                        database.insert(WorkoutDB.TABLE_NAME, null, content);
+                        content.put(WorkoutDB.WORKOUT_RECORD, "1000"); // для теста БД
+                        database.close();
                     } else {
                         ExerciseList.addExerciseToList(new Exercise(newExerciseName, newExerciseDescription));
+                        content.put(WorkoutDB.WORKOUT_NAME, newExerciseName);
+                        content.put(WorkoutDB.WORKOUT_DESCRIPTION, newExerciseDescription);
+                        content.put(WorkoutDB.WORKOUT_RECORD, "1000"); // для теста БД
+                        database.insert(WorkoutDB.TABLE_NAME, null, content);
+                        database.close();
                     }
                     finish();
                 } else {
