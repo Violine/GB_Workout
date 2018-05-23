@@ -6,5 +6,5 @@
     android:background="#032dff"
     android:elevation="4dp"
     tools:titleTextColor="#fff"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    tools:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    tools:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />

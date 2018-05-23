@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -89,8 +90,14 @@ public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutC
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+      //  getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) finish();
+        return super.onOptionsItemSelected(item);
     }
 
     private void InitUI() {
@@ -116,7 +123,10 @@ public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutC
         recordDateTextView.setText(currentDate);
         recordValueTextView.setText(recordText);
 
-        setSupportActionBar(workoutToolbar);
+        setSupportActionBar(workoutToolbar); // инициализируем ActionBar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         getExerciseDataFromId(id);
         plusRepsButton.setOnClickListener(new View.OnClickListener() {
             @Override
