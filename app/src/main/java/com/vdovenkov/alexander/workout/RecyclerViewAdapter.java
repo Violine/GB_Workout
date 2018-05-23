@@ -49,7 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //            recordDBTest = cursor.getString(recordColumnIndex);
 //            holder.exerciseRecord.setText(recordDBTest);
 //        }
-
+//TODO Довести до ума механизм сохранения в базу данныъ
         final String exerciseText = exercises.get(position).getExerciseName();
         holder.exerciseName.setText(exerciseText);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
