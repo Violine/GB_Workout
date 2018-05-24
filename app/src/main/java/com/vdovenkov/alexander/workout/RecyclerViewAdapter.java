@@ -10,8 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -49,9 +51,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 //            recordDBTest = cursor.getString(recordColumnIndex);
 //            holder.exerciseRecord.setText(recordDBTest);
 //        }
-//TODO Довести до ума механизм сохранения в базу данныъ
+//TODO Довести до ума механизм сохранения в базу данныx
         final String exerciseText = exercises.get(position).getExerciseName();
         holder.exerciseName.setText(exerciseText);
+        // Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(holder.exerciseImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,12 +88,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         CardView exerciseCard;
         TextView exerciseName;
         TextView exerciseRecord;
+        ImageView exerciseImage;
 
         ExerciseViewHolder(View itemView) {
             super(itemView);
             exerciseCard = itemView.findViewById(R.id.exercise_cardview);
             exerciseName = itemView.findViewById(R.id.exercise_name);
             exerciseRecord = itemView.findViewById(R.id.workout_detail_record_label_cardview);
+            exerciseImage = itemView.findViewById(R.id.exercise_card_image);
         }
     }
 }

@@ -7,6 +7,7 @@ import android.provider.BaseColumns;
 import android.util.Log;
 
 public class WorkoutDB extends SQLiteOpenHelper implements BaseColumns {
+    Context context;
     private static final String DATABASE_NAME = "workout_database.db";
     private static final int VERSION = 1;
     protected static final String WORKOUT_NAME = "workoutname";
@@ -28,7 +29,7 @@ public class WorkoutDB extends SQLiteOpenHelper implements BaseColumns {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w("LOF_TAG", "Обновление базы данных до версии:" + newVersion);
+        Log.w("LOF_TAG", context.getString(R.string.database_update_message) + newVersion);
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }

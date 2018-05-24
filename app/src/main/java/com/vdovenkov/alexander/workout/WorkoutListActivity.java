@@ -11,9 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -77,6 +74,7 @@ public class WorkoutListActivity extends AppCompatActivity {
         recView.setLayoutManager(linearLayoutManager);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(exercises);
         recView.setAdapter(adapter);
+
     }
 
 }
