@@ -12,7 +12,7 @@ Phasellus pharetra enim vel leo accumsan suscipit. Nam a condimentum elit, at ma
 Praesent nunc nulla, porta eu tincidunt sed, rhoncus non tortor. Nullam at gravida sapien. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc dignissim volutpat dui ac semper. Integer accumsan consectetur pharetra. Nulla nulla ipsum, porttitor a dolor nec, gravida efficitur arcu. Pellentesque cursus bibendum scelerisque. Suspendisse aliquet dictum eleifend. Mauris auctor, tellus vitae blandit euismod, risus nunc hendrerit dui, ac semper enim sem et augue. Aliquam vel dapibus turpis. Mauris sit amet felis tellus.</string>
     <string name="weight">{0} кг</string>
     <string name="record">Результат - {0} кг \nПопытка номер {1}</string>
-    <string name="date">Дата:</string>
+    <string name="date">Дата: {0}</string>
     <string name="exercise_name">Заголовок упражнения</string>
     <string name="share_resut">Поделиться...</string>
     <string name="shared_message">Мною установлен рекорд: {0} \n Дата: {1}</string>
@@ -27,4 +27,5 @@ Praesent nunc nulla, porta eu tincidunt sed, rhoncus non tortor. Nullam at gravi
     <string name="delete_exercise_warning">Действительно удалить упражнение?</string>
     <string name="message_delete_warning">Все рекорды будут удалены</string>
     <string name="delete">Удалить</string>
+    <string name="database_update_message">Обновление базы данных до версии:</string>
 </resources>

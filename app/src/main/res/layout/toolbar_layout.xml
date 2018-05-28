@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
+    android:background="#032dff"
     android:elevation="4dp"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    tools:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    tools:titleTextColor="#fff"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    tools:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />

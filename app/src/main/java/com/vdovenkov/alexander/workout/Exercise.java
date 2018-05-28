@@ -4,12 +4,25 @@ public class Exercise {
 
     private String exerciseName;
     private String exerciseDescription;
-    private int exerciseRecordDate;
+    private long exerciseRecordDate;
+    private int exerciseRecord;
+
+    public Exercise(String exerciseName, String exerciseDescription, long exerciseRecordDate, int exerciseRecord) {
+        this.exerciseName = exerciseName;
+        this.exerciseDescription = exerciseDescription;
+        this.exerciseRecordDate = exerciseRecordDate;
+        this.exerciseRecord = exerciseRecord;
+    }
 
     Exercise(String exerciseName) {
         this.exerciseName = exerciseName;
     }
-// TODO Сделать перегруженный конструктор, чтобы пользователь мог вводить не только название упраженения, но и описания.
+
+    public Exercise(String exerciseName, String exerciseDescription) {
+        this.exerciseName = exerciseName;
+        this.exerciseDescription = exerciseDescription;
+    }
+
     public String getExerciseName() {
         return exerciseName;
     }
@@ -18,7 +31,7 @@ public class Exercise {
         return exerciseDescription;
     }
 
-    public int getExerciseRecordDate() {
+    public long getExerciseRecordDate() {
         return exerciseRecordDate;
     }
 
@@ -28,6 +41,10 @@ public class Exercise {
 
     public void setExerciseDescription(String exerciseDescription) {
         this.exerciseDescription = exerciseDescription;
+    }
+
+    public int getExerciseRecord() {
+        return exerciseRecord;
     }
 
     public void setExerciseRecordDate(int exerciseDate) {
