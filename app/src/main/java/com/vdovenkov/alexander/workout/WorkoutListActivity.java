@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+
 import java.util.List;
 
 
@@ -25,7 +26,6 @@ public class WorkoutListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initUI();
-        initDB();
     }
 
     @Override
@@ -46,16 +46,12 @@ public class WorkoutListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initDB() {
-        WorkoutDB sqh = new WorkoutDB(this);
-        SQLiteDatabase database = sqh.getWritableDatabase();
-        database.close();
-        sqh.close();
-    }
-
     private void initUI() {
         setContentView(R.layout.activity_workout_list);
-        exercises = ExerciseList.getExercisesList();
+       // exercises = ExerciseList.getExercisesList();
+        ExerciseList exerciselist = new ExerciseList(this);
+        exercises = exerciselist.readExerciseFromDB();
+
         recView = findViewById(R.id.recview);
 
         workoutToolbar = findViewById(R.id.workout_toolbar);

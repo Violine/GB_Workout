@@ -20,8 +20,8 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ExerciseViewHolder> implements WorkoutConstants {
 
     List<Exercise> exercises;
-    WorkoutDB sqlHelper;
-    SQLiteDatabase workoutDB;
+//    WorkoutDB sqlHelper;
+//    SQLiteDatabase workoutDB;
 
     RecyclerViewAdapter(List<Exercise> exercises) {
         this.exercises = exercises;
@@ -40,28 +40,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(ExerciseViewHolder holder, final int position) {
+    public void onBindViewHolder(final ExerciseViewHolder holder, int position) {
 
-//        sqlHelper = new WorkoutDB(holder.exerciseCard.getContext());
-//        workoutDB = sqlHelper.getWritableDatabase();
-//        String recordDBTest;
-//        Cursor cursor = workoutDB.query(WorkoutDB.TABLE_NAME, null, null, null, null, null, null);
-//        if (cursor.moveToFirst()) {
-//            int recordColumnIndex = cursor.getColumnIndex(WorkoutDB.WORKOUT_RECORD);
-//            recordDBTest = cursor.getString(recordColumnIndex);
-//            holder.exerciseRecord.setText(recordDBTest);
-//        }
-//TODO Довести до ума механизм сохранения в базу данныx
-        final String exerciseText = exercises.get(position).getExerciseName();
+        String exerciseText = exercises.get(position).getExerciseName();
         holder.exerciseName.setText(exerciseText);
-        // Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(holder.exerciseImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, WorkoutDetailActivity.class);
-                intent.putExtra("id", position); // передать порядковый номер в списке
-                //intent.putExtra("record", recordDBTest); // передаем тестовое значение из БД
+                intent.putExtra("id", holder.getAdapterPosition()); // передать порядковый номер в списке
                 context.startActivity(intent);
             }
         });
@@ -70,7 +58,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         {
             @Override
             public boolean onLongClick(View v) {
-                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), REMOVE_DIALOG, position);
+                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), REMOVE_DIALOG, holder.getAdapterPosition());
                 dialog.show();
                 return true;
             }
@@ -83,11 +71,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
-    public static class ExerciseViewHolder extends RecyclerView.ViewHolder {
+    static class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         CardView exerciseCard;
         TextView exerciseName;
         TextView exerciseRecord;
+        TextView exerciseRecordDate;
         ImageView exerciseImage;
 
         ExerciseViewHolder(View itemView) {
@@ -96,6 +85,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             exerciseName = itemView.findViewById(R.id.exercise_name);
             exerciseRecord = itemView.findViewById(R.id.workout_detail_record_label_cardview);
             exerciseImage = itemView.findViewById(R.id.exercise_card_image);
+            exerciseRecordDate = itemView.findViewById(R.id.workout_detail_date_label_cardview);
         }
     }
 }
