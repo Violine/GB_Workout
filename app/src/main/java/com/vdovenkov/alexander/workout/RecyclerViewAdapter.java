@@ -43,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         String exerciseName = exercises.get(position).getExerciseName();
         String exerciseRecordDate = exercises.get(position).getExerciseRecordDate();
         String exerciseDescription = exercises.get(position).getExerciseDescription();
-        int exerciseRecord = exercises.get(position).getExerciseRecord();
+        String exerciseRecord = exercises.get(position).getExerciseRecord();
         holder.exerciseDescription.setText(exerciseDescription);
         holder.exerciseRecordDate.setText(exerciseRecordDate);
         holder.exerciseRecord.setText(String.valueOf(exerciseRecord));
@@ -53,7 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context, WorkoutDetailActivity.class);
-                intent.putExtra("id", holder.getAdapterPosition()); // передать порядковый номер в списке
+                intent.putExtra("id", exercises.get(holder.getAdapterPosition()).getExerciseID()); // передать ID
                 context.startActivity(intent);
             }
         });

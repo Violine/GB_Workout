@@ -34,7 +34,7 @@ public class ExerciseList {
             int workoutRecordDateColumnIndex = cursor.getColumnIndex(WorkoutDB.WORKOUT_RECORD_DATE);
             do {
                 Exercise exercise = new Exercise(cursor.getString(workoutNameColumnIndex), cursor.getString(workoutDescriptionColumnIndex),
-                        cursor.getString(workoutRecordDateColumnIndex), cursor.getInt(workoutRecordColumnIndex));
+                        cursor.getString(workoutRecordDateColumnIndex), cursor.getString(workoutRecordColumnIndex));
                 exercise.setExerciseID(cursor.getInt(idColumnIndex));
                 exercises.add(exercise);
             } while (cursor.moveToNext());
@@ -81,8 +81,34 @@ public class ExerciseList {
         return exercises;
     }
 
-    protected static Exercise getExerciseFromList(int position) {
-        return exercises.get(position);
+    protected static Exercise getExerciseFromList(int id) {
+        initWorkoutDB(context);
+        Exercise exercise = null;
+        String[] selectionArgs = new String[]{String.valueOf(id)};
+        Cursor cursor = workoutDB.query(WorkoutDB.TABLE_NAME, null, WorkoutDB._ID + " = ?", selectionArgs, null, null, null);
+        if (cursor.moveToFirst()) {
+            int workoutNameColumnIndex = cursor.getColumnIndex(WorkoutDB.WORKOUT_NAME);
+            int workoutDescriptionColumnIndex = cursor.getColumnIndex(WorkoutDB.WORKOUT_DESCRIPTION);
+            int workoutRecordColumnIndex = cursor.getColumnIndex(WorkoutDB.WORKOUT_RECORD);
+            int workoutRecordDateColumnIndex = cursor.getColumnIndex(WorkoutDB.WORKOUT_RECORD_DATE);
+            do {
+                exercise = new Exercise(cursor.getString(workoutNameColumnIndex), cursor.getString(workoutDescriptionColumnIndex),
+                        cursor.getString(workoutRecordDateColumnIndex), cursor.getString(workoutRecordColumnIndex));
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        closeWorkoutDB();
+        return exercise;
     }
 
+    public static void saveDataToDB(int id, String recordValueText, String currentDate) {
+        initWorkoutDB(context);
+        String[] selectionArgs = new String[]{String.valueOf(id)};
+        ContentValues content = new ContentValues();
+        content.put(WorkoutDB.WORKOUT_RECORD_DATE, currentDate);
+        content.put(WorkoutDB.WORKOUT_RECORD, recordValueText);
+        workoutDB.update(WorkoutDB.TABLE_NAME, content, WorkoutDB._ID + " = ?", selectionArgs);
+        readExerciseFromDB();
+        closeWorkoutDB();
+    }
 }

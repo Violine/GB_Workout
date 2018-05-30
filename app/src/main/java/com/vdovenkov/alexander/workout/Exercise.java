@@ -5,11 +5,11 @@ public class Exercise {
     private String exerciseName;
     private String exerciseDescription;
     private String exerciseRecordDate;
-    private int exerciseRecord;
+    private String exerciseRecord;
     private int exerciseID;
 
 
-    public Exercise(String exerciseName, String exerciseDescription, String  exerciseRecordDate, int exerciseRecord) {
+    public Exercise(String exerciseName, String exerciseDescription, String exerciseRecordDate, String exerciseRecord) {
         this.exerciseName = exerciseName;
         this.exerciseDescription = exerciseDescription;
         this.exerciseRecordDate = exerciseRecordDate;
@@ -49,7 +49,7 @@ public class Exercise {
         return exerciseID;
     }
 
-    public int getExerciseRecord() {
+    public String getExerciseRecord() {
         return exerciseRecord;
     }
 
