@@ -1,8 +1,6 @@
 package com.vdovenkov.alexander.workout;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import java.util.List;
-
 
 public class WorkoutListActivity extends AppCompatActivity {
 
@@ -35,8 +32,8 @@ public class WorkoutListActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
         recView.getAdapter().notifyDataSetChanged();
     }
 
@@ -48,14 +45,13 @@ public class WorkoutListActivity extends AppCompatActivity {
 
     private void initUI() {
         setContentView(R.layout.activity_workout_list);
-       // exercises = ExerciseList.getExercisesList();
         ExerciseList exerciselist = new ExerciseList(this);
         exercises = exerciselist.readExerciseFromDB();
 
         recView = findViewById(R.id.recview);
 
         workoutToolbar = findViewById(R.id.workout_toolbar);
-        setSupportActionBar(workoutToolbar); // инициализируем ActionBar
+        setSupportActionBar(workoutToolbar);
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

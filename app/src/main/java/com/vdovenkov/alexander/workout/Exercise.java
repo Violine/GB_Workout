@@ -6,6 +6,8 @@ public class Exercise {
     private String exerciseDescription;
     private long exerciseRecordDate;
     private int exerciseRecord;
+    private int exerciseID;
+
 
     public Exercise(String exerciseName, String exerciseDescription, long exerciseRecordDate, int exerciseRecord) {
         this.exerciseName = exerciseName;
@@ -43,8 +45,16 @@ public class Exercise {
         this.exerciseDescription = exerciseDescription;
     }
 
+    public int getExerciseID() {
+        return exerciseID;
+    }
+
     public int getExerciseRecord() {
         return exerciseRecord;
+    }
+
+    public void setExerciseID(int exerciseID) {
+        this.exerciseID = exerciseID;
     }
 
     public void setExerciseRecordDate(int exerciseDate) {

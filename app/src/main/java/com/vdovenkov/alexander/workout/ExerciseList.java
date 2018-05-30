@@ -22,20 +22,6 @@ public class ExerciseList {
         this.context = context;
     }
 
-    static {
-
-        generateTestExercise();
-        //readExerciseFromDB(context);
-
-    }
-
-    protected static void generateTestExercise() {
-        exercises = new ArrayList<>();
-        exercises.add(new Exercise("Подтягивание"));
-        exercises.add(new Exercise("Отжимания"));
-        exercises.add(new Exercise("Приседания"));
-    }
-
     public static List<Exercise> readExerciseFromDB() {
         initWorkoutDB(context);
         exercises = new ArrayList<>();
@@ -49,6 +35,7 @@ public class ExerciseList {
             do {
                 Exercise exercise = new Exercise(cursor.getString(workoutNameColumnIndex), cursor.getString(workoutDescriptionColumnIndex),
                         cursor.getLong(workoutRecordDateColumnIndex), cursor.getInt(workoutRecordColumnIndex));
+                exercise.setExerciseID(cursor.getInt(idColumnIndex));
                 exercises.add(exercise);
             } while (cursor.moveToNext());
         }
@@ -80,8 +67,8 @@ public class ExerciseList {
 
     protected static void removeExerciseFromList(int position) {
         initWorkoutDB(context);
-        exercises.remove(position);
-        workoutDB.delete(WorkoutDB.TABLE_NAME, WorkoutDB._ID + " = " + position, null);
+        int removedID = exercises.get(position).getExerciseID();
+        workoutDB.delete(WorkoutDB.TABLE_NAME, WorkoutDB._ID + " = " + removedID, null);
         closeWorkoutDB();
     }
 
