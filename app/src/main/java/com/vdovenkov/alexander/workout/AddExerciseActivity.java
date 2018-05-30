@@ -41,11 +41,11 @@ public class AddExerciseActivity extends AppCompatActivity {
                 if (!newExerciseName.equals("")) {
                     if (newExerciseDescription.equals("")) {
                       //  ExerciseList.addExerciseToList(new Exercise(newExerciseName));
-                        ExerciseList.writeExerciseToDB(v.getContext(), new Exercise(newExerciseName, null, 0, 0));
+                        ExerciseList.writeExerciseToDB(v.getContext(), new Exercise(newExerciseName, null, null, 0));
 
                     } else {
                      //   ExerciseList.addExerciseToList(new Exercise(newExerciseName, newExerciseDescription));
-                        ExerciseList.writeExerciseToDB(v.getContext(), new Exercise(newExerciseName, newExerciseDescription, 0, 0));
+                        ExerciseList.writeExerciseToDB(v.getContext(), new Exercise(newExerciseName, newExerciseDescription, null, 0));
                     }
                     finish();
                 } else {

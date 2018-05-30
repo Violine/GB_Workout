@@ -34,7 +34,7 @@ public class ExerciseList {
             int workoutRecordDateColumnIndex = cursor.getColumnIndex(WorkoutDB.WORKOUT_RECORD_DATE);
             do {
                 Exercise exercise = new Exercise(cursor.getString(workoutNameColumnIndex), cursor.getString(workoutDescriptionColumnIndex),
-                        cursor.getLong(workoutRecordDateColumnIndex), cursor.getInt(workoutRecordColumnIndex));
+                        cursor.getString(workoutRecordDateColumnIndex), cursor.getInt(workoutRecordColumnIndex));
                 exercise.setExerciseID(cursor.getInt(idColumnIndex));
                 exercises.add(exercise);
             } while (cursor.moveToNext());
@@ -52,6 +52,7 @@ public class ExerciseList {
         workoutContent.put(WorkoutDB.WORKOUT_RECORD_DATE, exercise.getExerciseRecordDate());
         workoutContent.put(WorkoutDB.WORKOUT_RECORD, exercise.getExerciseRecord());
         workoutDB.insert(WorkoutDB.TABLE_NAME, null, workoutContent);
+        readExerciseFromDB();
         closeWorkoutDB();
     }
 

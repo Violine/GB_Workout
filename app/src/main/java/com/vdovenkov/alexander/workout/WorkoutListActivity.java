@@ -18,6 +18,8 @@ public class WorkoutListActivity extends AppCompatActivity {
     private RecyclerView recView;
     private FloatingActionButton fab;
     private Toolbar workoutToolbar;
+    private RecyclerViewAdapter adapter;
+    ExerciseList exerciselist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +35,9 @@ public class WorkoutListActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        if (adapter != null && exerciselist != null)
+            adapter.dataChanged(exerciselist.readExerciseFromDB());
         super.onResume();
-        recView.getAdapter().notifyDataSetChanged();
     }
 
     @Override
@@ -45,7 +48,7 @@ public class WorkoutListActivity extends AppCompatActivity {
 
     private void initUI() {
         setContentView(R.layout.activity_workout_list);
-        ExerciseList exerciselist = new ExerciseList(this);
+        exerciselist = new ExerciseList(this);
         exercises = exerciselist.readExerciseFromDB();
 
         recView = findViewById(R.id.recview);
@@ -64,7 +67,7 @@ public class WorkoutListActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recView.setLayoutManager(linearLayoutManager);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(exercises);
+        adapter = new RecyclerViewAdapter(exercises);
         recView.setAdapter(adapter);
 
     }
