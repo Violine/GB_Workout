@@ -28,4 +28,6 @@ Praesent nunc nulla, porta eu tincidunt sed, rhoncus non tortor. Nullam at gravi
     <string name="message_delete_warning">Все рекорды будут удалены</string>
     <string name="delete">Удалить</string>
     <string name="database_update_message">Обновление базы данных до версии:</string>
+    <string name="None">Нет</string>
+    <string name="workout_application">Workout Application</string>
 </resources>

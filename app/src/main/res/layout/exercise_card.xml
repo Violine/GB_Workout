@@ -25,8 +25,9 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="0dp"
+                android:orientation="vertical"
                 android:layout_height="wrap_content"
                 android:layout_weight="2">
 
@@ -55,9 +56,10 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_weight="1">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -70,9 +72,9 @@
                         <TextView
                             android:id="@+id/workout_detail_record_label_cardview"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:padding="8dp"
-                            android:text=""
+                            android:text="Не установлен"
                             android:textColor="#0d1fdf"
                             android:textSize="16sp" />
 
@@ -84,7 +86,7 @@
                         android:background="#5b5858" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
@@ -100,14 +102,14 @@
                         <TextView
                             android:id="@+id/workout_detail_date_label_cardview"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:padding="8dp"
-                            android:text=""
+                            android:text="Не задана"
                             android:textColor="#0d1fdf"
                             android:textSize="16sp" />
                     </LinearLayout>
                 </LinearLayout>
-            </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
 
         <View
@@ -116,6 +118,7 @@
             android:background="#5b5858" />
 
         <TextView
+            android:id="@+id/workout_detail_card_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

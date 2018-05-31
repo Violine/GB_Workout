@@ -18,7 +18,7 @@ public class WorkoutDB extends SQLiteOpenHelper implements BaseColumns {
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE "
             + TABLE_NAME + " (" + WorkoutDB._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + WORKOUT_NAME + " VARCHAR(255), " + WORKOUT_DESCRIPTION + " TEXT, "
-            + WORKOUT_RECORD + " VARCHAR(255), "+ WORKOUT_RECORD_DATE + " VARCHAR(255));";
+            + WORKOUT_RECORD + " VARCHAR(255), " + WORKOUT_RECORD_DATE + " VARCHAR(255));";
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS "
             + TABLE_NAME;
 
@@ -29,7 +29,7 @@ public class WorkoutDB extends SQLiteOpenHelper implements BaseColumns {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w("LOF_TAG", context.getString(R.string.database_update_message) + newVersion);
+        Log.w("LOG_TAG", context.getString(R.string.database_update_message) + newVersion);
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
@@ -37,4 +37,5 @@ public class WorkoutDB extends SQLiteOpenHelper implements BaseColumns {
     public WorkoutDB(Context context) {
         super(context, DATABASE_NAME, null, VERSION);
     }
+
 }

@@ -4,10 +4,12 @@ public class Exercise {
 
     private String exerciseName;
     private String exerciseDescription;
-    private long exerciseRecordDate;
-    private int exerciseRecord;
+    private String exerciseRecordDate;
+    private String exerciseRecord;
+    private int exerciseID;
 
-    public Exercise(String exerciseName, String exerciseDescription, long exerciseRecordDate, int exerciseRecord) {
+
+    public Exercise(String exerciseName, String exerciseDescription, String exerciseRecordDate, String exerciseRecord) {
         this.exerciseName = exerciseName;
         this.exerciseDescription = exerciseDescription;
         this.exerciseRecordDate = exerciseRecordDate;
@@ -31,7 +33,7 @@ public class Exercise {
         return exerciseDescription;
     }
 
-    public long getExerciseRecordDate() {
+    public String getExerciseRecordDate() {
         return exerciseRecordDate;
     }
 
@@ -43,11 +45,16 @@ public class Exercise {
         this.exerciseDescription = exerciseDescription;
     }
 
-    public int getExerciseRecord() {
+    public int getExerciseID() {
+        return exerciseID;
+    }
+
+    public String getExerciseRecord() {
         return exerciseRecord;
     }
 
-    public void setExerciseRecordDate(int exerciseDate) {
-        this.exerciseRecordDate = exerciseDate;
+    public void setExerciseID(int exerciseID) {
+        this.exerciseID = exerciseID;
     }
+
 }

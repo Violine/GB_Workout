@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutConstants {
+public class WorkoutDetailFragment extends AppCompatActivity implements WorkoutConstants {
 
     static final String REPS_COUNT = "repsCount";
     static final String RECORD_TEXT = "recordText";
@@ -50,6 +50,7 @@ public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutC
 
     int reps;
     int id;
+    int position;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -75,22 +76,9 @@ public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutC
         InitUI();
     }
 
-    private void createShareIntent(String messageToShare) {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, messageToShare);
-        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_resut)));
-    }
-
-    private void getExerciseDataFromId(int position) {
-        exercise = ExerciseList.getExerciseFromList(position);
-        titleTextView.setText(exercise.getExerciseName());
-        descriptionTextView.setText(exercise.getExerciseDescription());
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-      //  getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        //  getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
 
@@ -104,6 +92,8 @@ public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutC
         setContentView(R.layout.activity_workout_detail);
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0); // получаем ID упражнения
+        position = intent.getIntExtra("position", 0);
+
         workoutToolbar = findViewById(R.id.workout_toolbar);
         repsCountTextView = findViewById(R.id.workout_detail_reps_text_view);
         weightTextView = findViewById(R.id.workout_detail_weight_text_view);
@@ -148,10 +138,14 @@ public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutC
         saveRecordButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                recordValueTextView.setText(MessageFormat.format(getString(R.string.record), weightSeekBar.getProgress(), repsCountTextView.getText()));
+                String recordValueText = MessageFormat.format(getString(R.string.record),
+                        weightSeekBar.getProgress(), repsCountTextView.getText()); // получаем данные для записи в БД
+                recordValueTextView.setText(recordValueText);
                 SimpleDateFormat formattedDate = new SimpleDateFormat("dd.MM.YYYY", Locale.ROOT);
                 currentDate = formattedDate.format(new Date());
                 recordDateTextView.setText(MessageFormat.format(getString(R.string.date), currentDate));
+                ExerciseList.saveDataToDB(id, recordValueText, currentDate); // записываем в базу данных
+
             }
         });
         weightSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -180,9 +174,24 @@ public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutC
         removeExerciseFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), REMOVE_DIALOG, id);
+                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), REMOVE_DIALOG, position);
                 dialog.show();
             }
         });
+    }
+
+    private void createShareIntent(String messageToShare) {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, messageToShare);
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_resut)));
+    }
+
+    private void getExerciseDataFromId(int id) {
+        exercise = ExerciseList.getExerciseFromList(id);
+        titleTextView.setText(exercise.getExerciseName());
+        descriptionTextView.setText(exercise.getExerciseDescription());
+        recordDateTextView.setText(exercise.getExerciseRecordDate());
+        recordValueTextView.setText(String.valueOf(exercise.getExerciseRecord()));
     }
 }
