@@ -40,9 +40,9 @@ public class AddExerciseActivity extends AppCompatActivity {
                 String newExerciseDescription = exerciseDescriptionEditText.getText().toString();
                 if (!newExerciseName.equals("")) {
                     if (newExerciseDescription.equals("")) {
-                        ExerciseList.writeExerciseToDB(v.getContext(), new Exercise(newExerciseName, "Нет описания", "Нет", "Нет"));
+                        ExerciseList.writeExerciseToDB(v.getContext(), new Exercise(newExerciseName, getString(R.string.None), getString(R.string.None), getString(R.string.None)));
                     } else {
-                        ExerciseList.writeExerciseToDB(v.getContext(), new Exercise(newExerciseName, newExerciseDescription, "Нет", "Нет"));
+                        ExerciseList.writeExerciseToDB(v.getContext(), new Exercise(newExerciseName, newExerciseDescription, getString(R.string.None), getString(R.string.None)));
                     }
                     finish();
                 } else {

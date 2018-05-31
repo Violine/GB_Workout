@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ExerciseViewHolder> implements WorkoutConstants {
@@ -52,7 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Context context = v.getContext();
-                Intent intent = new Intent(context, WorkoutDetailActivity.class);
+                Intent intent = new Intent(context, WorkoutDetailFragment.class);
                 intent.putExtra("id", exercises.get(holder.getAdapterPosition()).getExerciseID()); // передать ID
                 context.startActivity(intent);
             }

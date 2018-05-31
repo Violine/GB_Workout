@@ -19,7 +19,7 @@ public class CustomDialog implements WorkoutConstants {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         ExerciseList.removeExerciseFromList(id);
-                        Intent intent = new Intent(context, WorkoutListActivity.class);
+                        Intent intent = new Intent(context, MainActivity.class);
                         context.startActivity(intent);
                     }
                 });

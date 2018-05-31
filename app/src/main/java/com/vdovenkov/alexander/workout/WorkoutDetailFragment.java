@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class WorkoutDetailActivity extends AppCompatActivity implements WorkoutConstants {
+public class WorkoutDetailFragment extends AppCompatActivity implements WorkoutConstants {
 
     static final String REPS_COUNT = "repsCount";
     static final String RECORD_TEXT = "recordText";
