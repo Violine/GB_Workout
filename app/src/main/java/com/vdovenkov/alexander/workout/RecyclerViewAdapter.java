@@ -53,6 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Context context = v.getContext();
                 Intent intent = new Intent(context, WorkoutDetailFragment.class);
                 intent.putExtra("id", exercises.get(holder.getAdapterPosition()).getExerciseID()); // передать ID
+                intent.putExtra("position", holder.getAdapterPosition());
                 context.startActivity(intent);
             }
         });

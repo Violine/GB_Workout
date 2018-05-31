@@ -50,6 +50,7 @@ public class WorkoutDetailFragment extends AppCompatActivity implements WorkoutC
 
     int reps;
     int id;
+    int position;
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -91,6 +92,7 @@ public class WorkoutDetailFragment extends AppCompatActivity implements WorkoutC
         setContentView(R.layout.activity_workout_detail);
         Intent intent = getIntent();
         id = intent.getIntExtra("id", 0); // получаем ID упражнения
+        position = intent.getIntExtra("position", 0);
 
         workoutToolbar = findViewById(R.id.workout_toolbar);
         repsCountTextView = findViewById(R.id.workout_detail_reps_text_view);
@@ -172,7 +174,7 @@ public class WorkoutDetailFragment extends AppCompatActivity implements WorkoutC
         removeExerciseFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), REMOVE_DIALOG, id);
+                AlertDialog dialog = CustomDialog.getDialog(v.getContext(), REMOVE_DIALOG, position);
                 dialog.show();
             }
         });
