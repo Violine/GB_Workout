@@ -10,9 +10,13 @@
           <option name="url" value="https://github.com/Violine/pocket-android-client.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/Wintermute46/PocketMessenger_android.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="D:\LEARNING\PocketMessenger" />
+    <option name="cloneParentDir" value="D:\LEARNING\GB_PocketMessenger" />
   </component>
   <component name="Vcs.Log.App.Settings">
     <option name="MIGRATED" value="true" />
